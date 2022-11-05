@@ -41,6 +41,16 @@
       document.forms.publish.onsubmit = function () {
         let user = this.user.value;
         let message = this.message.value;
+
+        if (user === "") {
+          alert("Заполните имя отправителя!");
+          return false;
+        }
+        if (message === "") {
+          alert("Текст сообщения не может быть пустым");
+          return false;
+        }
+
         // Отправим сообщение на сервер
         socket.send(JSON.stringify({ user, message }));
         // Очистим строку сообщения

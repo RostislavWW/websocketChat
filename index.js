@@ -21,7 +21,9 @@ webSocketServer.on("connection", (ws) => {
 
   ws.on("error", (e) => ws.send(e));
 
-  ws.send("Успешное подключение к чату");
+  ws.send(
+    JSON.stringify({ user: "server", message: "Успешное подключение к чату" })
+  );
 });
 
 server.listen(80, () => console.log("Server started http://127.0.0.1"));

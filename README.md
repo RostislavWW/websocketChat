@@ -5,6 +5,10 @@ git config --global user.name "Your Name"
 
 ### Используемые зависимости
 
+express  
+nodemon  
+ws
+
 #### Зпуск нескольких скриптов с помощью npm
 
 npm i concurrently --save-dev  
