@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Чат</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #form-message,
+      #messages {
+        width: 600px;
+      }
+      #messages div {
+        padding-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="form-message">
+      <!-- форма сообщений -->
+      <form name="publish">
+        <input type="text" name="user" placeholder="Имя отправителя" />
+        <input type="text" name="message" placeholder="Текст сообщения" />
+        <input type="submit" value="Отправить" />
+      </form>
+    </div>
+
+    <!-- div с сообщениями -->
+    <div id="messages"></div>
+
+    <!-- Подключаем JavaScript -->
+    <script>
+      let socket = new WebSocket("ws://192.168.2.37");
+
+      // отправка сообщения из формы
+      document.forms.publish.onsubmit = function () {
+        let user = this.user.value;
+        let message = this.message.value;
+        // Отправим сообщение на сервер
+        socket.send(JSON.stringify({ user, message }));
+        // Очистим строку сообщения
+        this.message.value = "";
+
+        return false;
+      };
+
+      // получение сообщения - отобразить данные в div#messages
+      socket.onmessage = function (event) {
+        // Распарсим в json сообщение от сервера
+        let message = JSON.parse(event.data);
+        // создадим див элемент
+        let messageElem = document.createElement("div");
+        // создадим б элемент
+        let userElem = document.createElement("b");
+        // добавим текст сообщения в див элемент
+        messageElem.textContent = message.message;
+        // добавим отправителя в б элемент
+        userElem.textContent = `${message.user}: `;
+        // вставим б элемент в начало див элемента
+        messageElem.prepend(userElem);
+        // вставим див элемент в див с id="messages"
+        document.getElementById("messages").prepend(messageElem);
+      };
+    </script>
+  </body>
+</html>
