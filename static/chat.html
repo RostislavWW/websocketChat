@@ -25,59 +25,12 @@
     <!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-
     <!-- Don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
-
-    <!-- Подключаем JavaScript -->
-    <!-- <script>
-      let socket = new WebSocket("ws://192.168.2.37");
-
-      // отправка сообщения из формы
-      document.forms.publish.onsubmit = function () {
-        let user = this.user.value;
-        let message = this.message.value;
-
-        if (user === "") {
-          alert("Заполните имя отправителя!");
-          return false;
-        }
-        if (message === "") {
-          alert("Текст сообщения не может быть пустым");
-          return false;
-        }
-
-        // Отправим сообщение на сервер
-        socket.send(JSON.stringify({ user, message }));
-        // Очистим строку сообщения
-        this.message.value = "";
-
-        return false;
-      };
-
-      // получение сообщения - отобразить данные в div#messages
-      socket.onmessage = function (event) {
-        // Распарсим в json сообщение от сервера
-        let message = JSON.parse(event.data);
-        // создадим див элемент
-        let messageElem = document.createElement("div");
-        // создадим б элемент
-        let userElem = document.createElement("b");
-        // добавим текст сообщения в див элемент
-        messageElem.textContent = message.message;
-        // добавим отправителя в б элемент
-        userElem.textContent = `${message.user}: `;
-        // вставим б элемент в начало див элемента
-        messageElem.prepend(userElem);
-        // вставим див элемент в див с id="messages"
-        document.getElementById("messages").prepend(messageElem);
-      };
-    </script> -->
-
-    <!-- Загрузим наш React-компонент. -->
+    <!-- Загрузим наше React-приложение. -->
     <script type="text/babel" src="/js/app.js"></script>
   </body>
 </html>

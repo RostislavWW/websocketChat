@@ -6,13 +6,16 @@ function Main() {
 
   // Обработка отправки формы
   const handleSubmit = (e) => {
+    // Остановим отправку формы по умолчанию
     e.preventDefault();
 
+    // Создадим объект сообщения для отправки
     const sendMessage = { user, message };
 
-    // Отправим сообщение на сервер
+    // Отправим объект сообщения на сервер
     ws.send(JSON.stringify(sendMessage));
 
+    // Очистим поле сообщения
     setMessage("");
   };
 
