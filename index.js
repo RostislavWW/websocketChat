@@ -18,7 +18,6 @@ const webSocketServer = new WebSocket.Server({ server });
 webSocketServer.on("connection", (ws) => {
   ws.on("message", (m) => {
     const userM = m.toString();
-    console.log(userM);
     webSocketServer.clients.forEach((client) => client.send(userM));
   });
 

@@ -15,10 +15,7 @@
     "ws": "^8.10.0"
   },
   "devDependencies": {
-    "@babel/standalone": "^7.20.2",
     "@types/express": "^4.17.14",
-    "babel-plugin-module-resolver-standalone": "^0.0.2",
-    "concurrently": "^7.5.0",
-    "requirejs-babel": "^0.0.9"
+    "concurrently": "^7.5.0"
   }
 }
