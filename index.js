@@ -5,6 +5,8 @@ const path = require("path");
 
 const app = express();
 
+app.use(express.static("static"));
+
 app.get("/", (req, res) => {
   res.sendFile(path.resolve("static", "chat.html"));
 });
@@ -16,6 +18,7 @@ const webSocketServer = new WebSocket.Server({ server });
 webSocketServer.on("connection", (ws) => {
   ws.on("message", (m) => {
     const userM = m.toString();
+    console.log(userM);
     webSocketServer.clients.forEach((client) => client.send(userM));
   });
 
