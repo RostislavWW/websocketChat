@@ -1,3 +1,7 @@
+#### Почтовый ящик с регистрацией без телефона
+
+https://www.hotmail.com
+
 #### Устанавливаем email и name автора
 
 git config --global user.email "you@example.com"  
