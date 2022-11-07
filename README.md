@@ -2,7 +2,11 @@
 
 https://www.hotmail.com
 
-#### Устанавливаем email и name автора
+#### Шпаргалки
+
+https://my-js.org/docs/cheatsheet/intro-cheatsheet
+
+#### Устанавливаем email и name автора в GIT
 
 git config --global user.email "you@example.com"  
 git config --global user.name "Your Name"
